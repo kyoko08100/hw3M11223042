@@ -18,7 +18,7 @@ print(df_Y)
 
 import matplotlib.pyplot as plt
 
-
+"""
 #KMeans
 plt.subplot(2,2,1)
 plt.scatter(df['x'],df['y'],c=banana_cluster)
@@ -27,21 +27,25 @@ plt.title("KMeans")
 plt.subplot(2,2,2)
 plt.scatter(df['x'], df['y'], c=df['class'])
 plt.title("raw data")
-
-plt.suptitle("exp1")
-plt.show()
-
+"""
+X = df.iloc[:,0:2].values
 km = cluster.KMeans(n_clusters=2)
-y_km = km.fit_predict(df_X)
+y_km = km.fit_predict(X)
 
-plt.scatter(df_X[df_Y==0,0],
-            df_X[df_Y==0,1],
-            c=purple,marker='+',edgecolor='black',label='cluster1')
-plt.scatter(df_X[df_Y==1,0],
-            df_X[df_Y==1,1],
-            c=yellow,marker='o',edgecolor='black',label='cluster2')
+#plt.subplot(2,2,3)
+plt.scatter(X[y_km==0,0],
+            X[y_km==0,1],
+            c='purple',marker='+',edgecolor='black',label='cluster1')
+plt.scatter(X[y_km==1,0],
+            X[y_km==1,1],
+            c='yellow',marker='o',edgecolor='black',label='cluster2')
+plt.scatter(km.cluster_centers_[:, 0],
+            km.cluster_centers_[:, 1],
+            s=300,c='red',marker='*',edgecolor='black',label='Centroids')
 plt.legend(scatterpoints=1)
 plt.grid()
 plt.tight_layout()
+#plt.title("label")
+#plt.suptitle("exp1")
 plt.show()
 
