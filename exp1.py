@@ -4,7 +4,7 @@ import numpy as np
 df = pd.read_csv(r'C:\dmhw3\hw3M11223042\banana.csv')
 
 df_X = df[['x','y']]
-df_Y = df.iloc[:,2].values
+raw = df.iloc[:,2].values
 from sklearn import cluster, datasets, metrics
 
 banana_kmeans_fit = cluster.KMeans(n_clusters=2).fit(df_X) 
@@ -14,7 +14,7 @@ banana_cluster = banana_kmeans_fit.labels_
 print("KMeans分群結果")
 print(banana_cluster)
 print("原本class")
-print(df_Y)
+print(raw)
 
 import matplotlib.pyplot as plt
 
