@@ -117,6 +117,7 @@ print("Entropy:", cluster_entropy(ac.labels_, df_y))
 # plt.scatter(df_x[df_y == 3].iloc[:, 0], df_x[df_y == 3].iloc[:, 1],c='orange', marker="$4$")
 
 # 階層式分群結果
+
 # plt.subplot(122)
 # plt.title('階層式分群結果')
 # plt.scatter(df_x[new_dy == 3].iloc[:, 0], df_x[new_dy == 3].iloc[:, 1],c='green', marker="$2$")
