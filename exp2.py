@@ -133,10 +133,9 @@ print("Entropy:", cluster_entropy(ac.labels_, df_y))
 
 # 使用DBSCAN分群並計算分群時間
 pre_t = time.time()
-dbscan = DBSCAN(eps=1.2, min_samples=4).fit(df_x) # eps=1.2, ms=4 可分為4群
+dbscan = DBSCAN(eps=1.12, min_samples=5).fit(df_x) # eps=1.2, ms=4 可分為4群 eps=1.12, ms=5 可分為4群 eps=1.2, ms=6 可分為4群
 post_t = time.time()
 print("DBSCAN分群花費時間: ", round(post_t - pre_t, 4), "秒")
-
 # 原始資料
 # plt.subplot(121)
 # plt.title('原始資料')
@@ -147,8 +146,13 @@ print("DBSCAN分群花費時間: ", round(post_t - pre_t, 4), "秒")
 
 # DBSCAN分群結果
 # plt.subplot(122)
-# plt.title('DBSCAN分群結果')
-# plt.scatter(df_x.iloc[:, 0], df_x.iloc[:, 1], c=dbscan.labels_, cmap=plt.cm.Set1)
+# plt.title('DBSCAN分群結果(min_samples=5)')
+# plt.scatter(df_x[dbscan.labels_ == 0].iloc[:, 0], df_x[dbscan.labels_ == 0].iloc[:, 1], c='red', marker="$1$")
+# plt.scatter(df_x[dbscan.labels_ == 1].iloc[:, 0], df_x[dbscan.labels_ == 1].iloc[:, 1], c='green', marker="$2$")
+# plt.scatter(df_x[dbscan.labels_ == 2].iloc[:, 0], df_x[dbscan.labels_ == 2].iloc[:, 1], c='blue', marker="$3$")
+# plt.scatter(df_x[dbscan.labels_ == 3].iloc[:, 0], df_x[dbscan.labels_ == 3].iloc[:, 1], c='orange', marker="$4$")
+# plt.scatter(df_x[dbscan.labels_ == -1].iloc[:, 0], df_x[dbscan.labels_ == -1].iloc[:, 1], c='gray')
+
 
 # 顯示圖表
 # plt.tight_layout()
